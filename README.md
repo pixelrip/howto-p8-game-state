@@ -13,7 +13,7 @@ This is repo provides one example of how to create a basic game state system in 
    ```bash
    ./scripts/build.sh
    ```
-   Load `game-staet.p8` in Pico-8 and run it.
+   Load `game-state.p8` in Pico-8 and run it.
 
 
 ## Project Structure
