@@ -1,4 +1,5 @@
 require("utils/log")
+require("entities/player")
 
 -- Main entry point for the game
 function _init()
@@ -6,18 +7,16 @@ function _init()
 
     -- Play music pattern from assets/music.p8
     music(0)
+
+    -- Create player instance
+    player = Player:new(57, 60)
 end
 
 function _update()
-    -- No update logic required
+    player:update()
 end
 
 function _draw()
-    -- Clear the screen
     cls()
-
-    -- Draw the sprite from assets/sprites.p8
-    sspr(8,0,15,11,57,60)
-
-    print("hello, world!", 38, 76, 7)
+    player:draw()
 end
