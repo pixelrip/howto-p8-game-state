@@ -15,18 +15,17 @@ function Player:new(x,y)
     self.sprite_x = 8
     self.sprite_y = 0 
 
-
-    function self:update()
-        -- Player update logic
-    end
-
-    function self:draw()
-        -- Player drawing logic
-        sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
-    end
-
-
     return self
 end
+
+function Player:update()
+    -- Player update logic
+end
+
+function Player:draw()
+    -- Player drawing logic
+    sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
+end
+
 
 
