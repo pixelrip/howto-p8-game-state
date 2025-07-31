@@ -1,6 +1,6 @@
-# Pico-8 Game Boilerplate
+# How to Create a Game State System in Pico-8
 
-A minimal but extensible starting point for Pico-8 games. Provides essential systems with clear expansion points - start simple, grow smart. 
+This is repo provides one example of how to create a basic game state system in PICO-8. Based on [p8-template](https://github.com/pixelrip/p8-template).
 
 ## Prerequisites
 
@@ -10,19 +10,10 @@ A minimal but extensible starting point for Pico-8 games. Provides essential sys
 3. **Git** (recommended) - For version control
 
 ## Quick Start
-
-1. **Clone and rename**
-   ```bash
-   git clone [repo-url] my-game
-   cd my-game
-   mv boilerplate.p8 my-game.p8
-   ```
-
-2. **Build and test**
    ```bash
    ./scripts/build.sh
    ```
-   Load `my-game.p8` in Pico-8 and run it.
+   Load `game-staet.p8` in Pico-8 and run it.
 
 
 ## Project Structure
