@@ -6,6 +6,7 @@ GameplayState = GameState.new()
 function GameplayState:init()
     log("-> Entering Gameplay State")
 
+    -- State Properties
     self.bgcolor = 2
 end
 
@@ -15,7 +16,7 @@ end
 
 function GameplayState:draw()
     cls(self.bgcolor)
-    print("gameplay state", 2, 2)
+    print("gameplay state", 2, 2, 7)
 end
 
 function GameplayState:exit()

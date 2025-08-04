@@ -5,6 +5,8 @@ GameOverState = GameState.new()
 
 function GameOverState:init()
     log("-> Entering Game Over State")
+
+    -- State Properties
     self.bgcolor = 3
 end
 
@@ -14,7 +16,7 @@ end
 
 function GameOverState:draw()
     cls(self.bgcolor)
-    print("game over state", 2, 2)
+    print("game over state", 2, 2, 7)
 end
 
 function GameOverState:exit()

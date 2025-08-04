@@ -5,7 +5,8 @@ TitleState = GameState.new()
 
 function TitleState:init()
     log("-> Entering Title State")
-    music(0)
+
+    -- State Properties
     self.bgcolor = 1
 end
 
@@ -15,7 +16,7 @@ end
 
 function TitleState:draw()
     cls(self.bgcolor)
-    print("title state", 2, 2)
+    print("title state", 2, 2, 7)
 end
 
 function TitleState:exit()

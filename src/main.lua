@@ -24,14 +24,48 @@ function _init()
     gameStateManager:add("gameplay", GameplayState)
     gameStateManager:add("gameOver",  GameOverState)
 
-    gameStateManager:switch("gameOver")
+    gameStateManager:switch("title")
+
+    -- DEMO FUNCTIONALITY
+    -- Code only exists in the core game loop to demonstrate how states are handled
+    demo = {
+        timer = 0,
+        states = {"title", "gameplay", "gameOver"},
+        currentState = 1
+    }
+
+    log("demo created:")
+    log("   -> demo.timer = "..demo.timer)
+    log("   -> #demo.states = "..#demo.states)
+    log("   -> demo.currentState = "..demo.currentState)
 end
 
 function _update()
     gameStateManager:update()
+
+
+    -- DEMO FUNCTIONALITY
+    if (demo.timer >= 240) then
+        demo.timer = 0
+        demo.currentState += 1
+    
+        if (demo.currentState > #demo.states) then
+            demo.currentState = 1
+        end
+
+        -- Change state
+        gameStateManager:switch(demo.states[demo.currentState])
+    else
+        demo.timer += 1
+    end
+
 end
 
 function _draw()
     cls()
     gameStateManager:draw()
+
+    -- DEMO FUNCTIONALITY
+    print(demo.timer, 2, 22, 7)
 end
+
