@@ -26,7 +26,6 @@ function Player:update()
 
     if self:isOffScreen() then
         eventManager:publish("player_off_screen")
-        log("🔈 Player: player_off_screen")
     end
 end
 
