@@ -25,7 +25,8 @@ function Player:update()
     if (btn(3)) then self.y += 1 end
 
     if self:isOffScreen() then
-        gameStateManager:switch("gameOver")
+        eventManager:publish("player_off_screen")
+        log("🔈 Player: player_off_screen")
     end
 end
 

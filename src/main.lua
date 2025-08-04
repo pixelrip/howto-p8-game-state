@@ -1,6 +1,7 @@
 require("utils/log")
 
 -- Managers
+require("managers/eventManager")
 require("managers/gameStateManager")
 
 -- Game States
@@ -23,6 +24,11 @@ function _init()
 
     -- Start game in title state
     gameStateManager:switch("title")
+
+    -- Events
+    eventManager:subscribe("player_off_screen", function()
+        gameStateManager:switch("gameOver")
+    end)
 end
 
 function _update()
