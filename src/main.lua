@@ -45,7 +45,7 @@ function _update()
 
 
     -- DEMO FUNCTIONALITY
-    if (demo.timer >= 240) then
+    if (demo.timer >= 120) then
         demo.timer = 0
         demo.currentState += 1
     
@@ -66,6 +66,6 @@ function _draw()
     gameStateManager:draw()
 
     -- DEMO FUNCTIONALITY
-    print(demo.timer, 2, 22, 7)
+    print(flr(demo.timer/30+1).." of 4 seconds", 2, 22, 7)
 end
 
