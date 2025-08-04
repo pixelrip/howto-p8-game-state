@@ -1,4 +1,15 @@
 require("utils/log")
+require("managers/gameStateManager")
+
+-- REVIEW: This creates game states; should it live somewhere else?
+require("states/gameStates")
+
+-- Actual game states
+require("states/titleState")
+require("states/gamePlayState")
+require("states/gameOverState")
+
+-- Entities
 require("entities/player")
 
 -- Main entry point for the game
@@ -8,15 +19,19 @@ function _init()
     -- Play music pattern from assets/music.p8
     music(0)
 
-    -- Create player instance
-    player = Player:new(57, 60)
+    -- REVIEW: Should we consider keeping this somewhere else? gameStateManager:init() perhaps?
+    gameStateManager:add("title", TitleState)
+    gameStateManager:add("gameplay", GameplayState)
+    gameStateManager:add("gameOver",  GameOverState)
+
+    gameStateManager:switch("gameOver")
 end
 
 function _update()
-    player:update()
+    gameStateManager:update()
 end
 
 function _draw()
     cls()
-    player:draw()
+    gameStateManager:draw()
 end
