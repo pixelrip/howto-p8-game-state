@@ -4,7 +4,7 @@ Player = {}
 Player.__index = Player
 
 -- Constructor for Player
-function Player:new(x,y)
+function Player.new(x,y)
     local self = setmetatable({}, Player)
     
     -- Magic Numbers
@@ -19,12 +19,29 @@ function Player:new(x,y)
 end
 
 function Player:update()
-    -- Player update logic
+    if (btn(0)) then self.x -= 1 end
+    if (btn(1)) then self.x += 1 end
+    if (btn(2)) then self.y -= 1 end
+    if (btn(3)) then self.y += 1 end
+
+    if self:isOffScreen() then
+        gameStateManager:switch("gameOver")
+    end
 end
 
 function Player:draw()
     -- Player drawing logic
     sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
+
+    print(self.x..", "..self.y, 2, 119)
+end
+
+function Player:isOffScreen()
+    if self.x + self.width <= 0 then return true end
+    if self.x >= 128 then return true end
+    if self.y + self.height <= 0 then return true end
+    if self.y >= 128 then return true end
+    return false
 end
 
 
