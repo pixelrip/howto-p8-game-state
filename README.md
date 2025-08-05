@@ -18,20 +18,21 @@ This is repo provides one example of how to create a basic game state system in 
 
 ## Project Structure
 
-```
+```plaintext
 project/
-├── .vscode                # VS Code settings
-├── src/                   # Source code
-│   ├── main.lua           # Entry point with _init, _update, _draw
-│   └── utils/
-│       └── log.lua        # Logging utility
-├── assets/                
-│       ├── audio.p8       # Audio Data
-│       └── sprites.p8     # Spritesheet Data
+├── .vscode/               # VS Code settings
+├── assets/                # Spritesheet and Audio Data
 ├── build/                 # Generated files (dev/prod builds)
-├── scripts/               # Build automation
 ├── config/                # Build configuration
-└── docs/                  # Documentation
+├── scripts/               # Build automation
+├── src/                   # Source code
+│   ├── entities/          # Game objects (e.g., Player)
+│   ├── managers/          # Core systems (e.g., State, Events)
+│   ├── states/            # Different game states (e.g., Title, Gameplay)
+│   ├── utils/             # Helper functions (e.g., Logging)
+│   ├── main.lua           # Entry point with _init, _update, _draw
+│   └── setup.lua          # Initial configuration and registration
+└── README.md              # Main project README
 ```
 
 ## Workflow
