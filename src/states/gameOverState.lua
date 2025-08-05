@@ -9,9 +9,13 @@ function GameOverState:init()
     -- State Properties
     self.bgcolor = 3
     self.timer = 120
+    self.player = sessionManager:getEntity("player")
+    self.player:animateTo(57,30)
+    self.player:lock()
 end
 
 function GameOverState:update()
+    self.player:update()
     -- Timer countdown
     self.timer -= 1
 
@@ -23,12 +27,15 @@ end
 
 function GameOverState:draw()
     cls(self.bgcolor)
+    
     print("game over state", 2, 2, 7)
-
     print(flr(self.timer/30+1).." seconds until restart", 2, 12, 7)
+    
+    self.player:draw()
 end
 
 function GameOverState:exit()
+    self.player:unlock()
     log("<- Exiting Game Over State")
 end
 

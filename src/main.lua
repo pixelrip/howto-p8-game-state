@@ -4,6 +4,7 @@ require("setup")
 require("utils/log")
 
 -- Managers
+require("managers/sessionManager")
 require("managers/eventManager")
 require("managers/gameStateManager")
 
@@ -22,6 +23,9 @@ function _init()
 
     setup.register_game_states()
     setup.register_event_listeners()
+
+    -- Initialize persistant objects
+    sessionManager:init()
 
     -- Start game in title state
     gameStateManager:switch("title")

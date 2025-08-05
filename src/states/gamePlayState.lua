@@ -8,8 +8,7 @@ function GameplayState:init()
 
     -- State Properties
     self.bgcolor = 0
-    self.player = Player.new(57,30)
-
+    self.player = sessionManager:getEntity("player")
 end
 
 function GameplayState:update()
