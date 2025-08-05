@@ -14,7 +14,7 @@ function TitleState:update()
 
     -- Wait for button input
     if (btnp(5)) then
-        gameStateManager:switch("gameplay")
+        eventManager:publish("start_button_pressed")
     end
 
 end

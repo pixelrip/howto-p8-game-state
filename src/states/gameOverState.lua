@@ -17,7 +17,7 @@ function GameOverState:update()
 
     -- Show the title screen for 3 seconds then switch to title
     if (self.timer <= 0) then
-        gameStateManager:switch("gameplay")
+        eventManager:publish("restart_game_requested")
     end
 end
 

@@ -22,13 +22,23 @@ function _init()
     gameStateManager:add("gameplay", GameplayState)
     gameStateManager:add("gameOver",  GameOverState)
 
-    -- Start game in title state
-    gameStateManager:switch("title")
-
+    
     -- Events
     eventManager:subscribe("player_off_screen", function()
         gameStateManager:switch("gameOver")
     end)
+    
+    eventManager:subscribe("start_button_pressed", function()
+        gameStateManager:switch("gameplay")
+    end)
+
+    eventManager:subscribe("restart_game_requested", function()
+        gameStateManager:switch("gameplay")
+    end)
+
+
+    -- Start game in title state
+    gameStateManager:switch("title")
 end
 
 function _update()
