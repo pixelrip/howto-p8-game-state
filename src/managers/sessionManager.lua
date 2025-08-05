@@ -22,5 +22,5 @@ end
 
 -- Game Initialization
 function sessionManager:init()
-    self:addEntity("player", Player.new(57,30))
+    self:addEntity("player", Player.new())
 end

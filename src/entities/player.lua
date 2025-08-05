@@ -3,12 +3,16 @@
 Player = {}
 Player.__index = Player
 
+-- Player Constants
+Player.START_X = 57
+Player.START_Y = 30
+
 -- Constructor for Player
 function Player.new(x,y)
     local self = setmetatable({}, Player)
     
-    self.x = x or 0
-    self.y = y or 0
+    self.x = x or Player.START_X
+    self.y = y or Player.START_Y
     self.width = 15
     self.height = 11
     self.sprite_x = 8
@@ -61,6 +65,10 @@ function Player:draw()
     sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
 
     print(self.x..", "..self.y, 2, 119)
+end
+
+function Player:reset()
+    self:animateTo(Player.START_X, Player.START_Y)
 end
 
 function Player:animateTo(x,y)

@@ -7,11 +7,11 @@ function GameOverState:init()
     log("-> Entering Game Over State")
 
     -- State Properties
-    self.bgcolor = 3
+    self.bgcolor = 2
     self.timer = 120
     self.player = sessionManager:getEntity("player")
-    self.player:animateTo(57,30)
     self.player:lock()
+    self.player:reset()
 end
 
 function GameOverState:update()
