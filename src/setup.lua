@@ -14,7 +14,7 @@ function setup.register_event_listeners()
     end)
     
     eventManager:subscribe("start_button_pressed", function()
-        gameStateManager:switch("gameplay")
+        gameStateManager:startTransition("gameplay")
     end)
 
     eventManager:subscribe("restart_game_requested", function()
