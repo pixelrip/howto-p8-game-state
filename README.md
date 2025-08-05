@@ -77,7 +77,8 @@ There are two key parts to this system: the **GameState Manager** and the **Game
     This is the "brain" of the state machine. It does a few simple but important things:
 
       * It keeps track of the `current` active state.
-      * It has a `switch()` function changes from one state to another. When the switch occurs, it tells the *old* state to `exit()` and the *new* state to `init()`.
+      * It has a `switch()` function for immediate state changes. When the switch occurs, it tells the *old* state to `exit()` and the *new* state to `init()`.
+      * It also includes a simple, optional `startTransition()` function to demonstrate transitioning between states.
       * It plugs into PICO-8's main game loop. The main `_update()` and `_draw()` functions in `main.lua` don't have any game logic in them; they just tell the manager to update and draw the *current* state.
 
 ### The Game Flow
@@ -92,7 +93,7 @@ So, how does it all fit together?
 
     > **Note on the Event System**: This project uses a simple event system to allow different parts of the code to communicate without being directly tied together. This is another powerful OOP concept. I'm currently working on another project demonstrating this which I will link soon.
 
-    In `setup.lua` this is a "listener" for this event that tells the `gameStateManager` to switch to the `"gameplay"` state. The `gameStateManager` then calls `exit()` on the `TitleState` and `init()` on the `GameplayState`.
+    In `setup.lua` there is a "listener" for this event that tells the `gameStateManager` to start a transition to the `"gameplay"` state by calling `startTransition("gameplay")`. The `gameStateManager` handles the rest, playing the wipe animation and then switching the state.
 
 4.  **Gameplay**: Now the `GameplayState` is active, and its `update()` and `draw()` functions are being called each frame. This process repeats for the entire lifecycle of the game. When the player goes off-screen, the `Player` object publishes a `"player_off_screen"` event, which triggers a switch to the `"gameOver"` state, and so on.
 
