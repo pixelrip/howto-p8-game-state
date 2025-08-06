@@ -14,6 +14,9 @@ require("states/titleState")
 require("states/gamePlayState")
 require("states/gameOverState")
 
+-- Components
+require("components/moveable")
+
 -- Entities
 require("entities/player")
 

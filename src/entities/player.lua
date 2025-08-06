@@ -19,12 +19,9 @@ function Player.new(x,y)
     self.sprite_y = 0 
     self.is_locked = false
     
-    -- Movement animation properties
-    self.target_x = self.x
-    self.target_y = self.y
-    self.animating_speed = 0.1  -- How fast to interpolate (0-1, higher = faster)
-    self.is_animating = false
-
+    -- Components
+    self.moveable = Moveable.new(self)
+   
     return self
 end
 
@@ -37,24 +34,10 @@ function Player:update()
         if (btn(3)) then self.y += 1 end
     end
     
-    -- Handle gradual movement to target position
-    if self.is_animating then
-        local dx = self.target_x - self.x
-        local dy = self.target_y - self.y
-        
-        -- Check if we're close enough to the target
-        if abs(dx) < 0.5 and abs(dy) < 0.5 then
-            -- Snap to target and stop moving
-            self.x = self.target_x
-            self.y = self.target_y
-            self.is_animating = false
-        else
-            -- Move towards target
-            self.x = self.x + dx * self.animating_speed
-            self.y = self.y + dy * self.animating_speed
-        end
-    end
+    -- Components
+    self.moveable:update()
 
+    -- Events
     if self:isOffScreen() then
         eventManager:publish("player_off_screen")
     end
@@ -71,32 +54,7 @@ function Player:draw()
 end
 
 function Player:reset()
-    self:animateTo(Player.START_X, Player.START_Y)
-end
-
-function Player:animateTo(x,y)
-    self.target_x = x
-    self.target_y = y
-    self.is_animating = true
-end
-
--- Move to position instantly (no animation)
-function Player:animateToInstant(x,y)
-    self.x = x
-    self.y = y
-    self.target_x = x
-    self.target_y = y
-    self.is_animating = false
-end
-
--- Set movement speed (0-1, higher = faster)
-function Player:setAnimateSpeed(speed)
-    self.animating_speed = speed
-end
-
--- Check if player is currently moving to a target
-function Player:isAnimating()
-    return self.is_animating
+    self.moveable:moveTo(Player.START_X, Player.START_Y)
 end
 
 function Player:isOffScreen()
