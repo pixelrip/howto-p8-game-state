@@ -22,6 +22,10 @@ require("components/image")
 require("entities/base/entity")
 require("entities/player")
 
+-- UI
+require("ui/base/UIElement")
+require("ui/label")
+
 -- Main entry point for the game
 function _init()
     log("=== Game Started ===")
