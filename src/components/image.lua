@@ -22,6 +22,6 @@ function Image:draw(flip_x, flip_y)
 
     palt(0,false)
     palt(self.t, true)
-    sspr(self.sx, self.sy, self.w, self.h, self.owner.x, self.owner.y)
+    sspr(self.sx, self.sy, self.w, self.h, self.owner.x, self.owner.y, self.w, self.h, flip_x, flip_y)
     palt()
 end

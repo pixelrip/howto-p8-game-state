@@ -44,7 +44,6 @@ function Player:update()
 end
 
 function Player:draw()
-    -- Player drawing logic; ugly
     self.image:draw()
 end
 
