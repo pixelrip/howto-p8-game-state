@@ -50,11 +50,11 @@ The code might looking like this:
 
 ```lua
 function _update()
-  if (state=="is_on_title_screen") then
+  if state=="is_on_title_screen" then
     -- do title screen stuff
-  elseif (state=="is_playing") then
+  elseif state=="is_playing" then
     -- do gameplay stuff
-  elseif (state=="is_game_over") then
+  elseif state=="is_game_over" then
     -- do game over stuff
   end
 end
