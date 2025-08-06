@@ -16,6 +16,7 @@ require("states/gameOverState")
 
 -- Components
 require("components/moveable")
+require("components/image")
 
 -- Entities
 require("entities/player")

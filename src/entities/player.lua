@@ -11,15 +11,15 @@ Player.START_Y = 30
 function Player.new(x,y)
     local self = setmetatable({}, Player)
     
+    -- Properties
     self.x = x or Player.START_X
     self.y = y or Player.START_Y
-    self.width = 17
-    self.height = 13
-    self.sprite_x = 8
-    self.sprite_y = 0 
+    self.w = 17
+    self.h = 13
     self.is_locked = false
     
     -- Components
+    self.image = Image.new(self,8,0,11)
     self.moveable = Moveable.new(self)
    
     return self
@@ -45,12 +45,7 @@ end
 
 function Player:draw()
     -- Player drawing logic; ugly
-    palt(0,false)
-    palt(11,true)
-    sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
-    palt()
-
-    print(self.x..", "..self.y, 2, 119)
+    self.image:draw()
 end
 
 function Player:reset()
@@ -58,9 +53,9 @@ function Player:reset()
 end
 
 function Player:isOffScreen()
-    if self.x + self.width <= 0 then return true end
+    if self.x + self.w <= 0 then return true end
     if self.x >= 128 then return true end
-    if self.y + self.height <= 0 then return true end
+    if self.y + self.h <= 0 then return true end
     if self.y >= 128 then return true end
     return false
 end
