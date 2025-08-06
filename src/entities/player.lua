@@ -4,7 +4,7 @@ Player = {}
 Player.__index = Player
 
 -- Player Constants
-Player.START_X = 57
+Player.START_X = 55
 Player.START_Y = 30
 
 -- Constructor for Player
@@ -13,8 +13,8 @@ function Player.new(x,y)
     
     self.x = x or Player.START_X
     self.y = y or Player.START_Y
-    self.width = 15
-    self.height = 11
+    self.width = 17
+    self.height = 13
     self.sprite_x = 8
     self.sprite_y = 0 
     self.is_locked = false
@@ -61,8 +61,11 @@ function Player:update()
 end
 
 function Player:draw()
-    -- Player drawing logic
+    -- Player drawing logic; ugly
+    palt(0,false)
+    palt(11,true)
     sspr(self.sprite_x, self.sprite_y, self.width, self.height, self.x, self.y)
+    palt()
 
     print(self.x..", "..self.y, 2, 119)
 end
