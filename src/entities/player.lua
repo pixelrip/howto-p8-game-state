@@ -6,6 +6,8 @@ Player.__index = Player
 -- Player Constants
 Player.START_X = 55
 Player.START_Y = 30
+Player.BASE_W = 17
+Player.BASE_H = 13
 
 -- Constructor for Player
 function Player.new(x,y)
@@ -14,12 +16,12 @@ function Player.new(x,y)
     -- Properties
     self.x = x or Player.START_X
     self.y = y or Player.START_Y
-    self.w = 17
-    self.h = 13
+    self.w = Player.BASE_W
+    self.h = Player.BASE_H
     self.is_locked = false
     
     -- Components
-    self.image = Image.new(self,8,0,11)
+    self.image = Image.new(self,8,0,11) -- Magic numbers :(
     self.moveable = Moveable.new(self)
    
     return self
