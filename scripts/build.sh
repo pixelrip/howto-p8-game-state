@@ -26,36 +26,21 @@ rm $BUILD_DIR/dev/${PROJECT_NAME}-dev-built.p8
 
 echo "Building production version..."
 # Production build - using actual assets with minification
-p8tool build $BUILD_DIR/prod/${PROJECT_NAME}-prod.p8 \
+p8tool build $BUILD_DIR/prod/${PROJECT_NAME}-prod-built.p8 \
     --lua $SRC_DIR/main.lua \
     --lua-path="$LUA_PATH" \
     --gfx $ASSETS_DIR/sprites.p8 \
     --sfx $ASSETS_DIR/audio.p8 \
-    --music $ASSETS_DIR/audio.p8 \
-    --lua-minify \
-    --keep-names-from-file=config/preserve_names.txt
+    --music $ASSETS_DIR/audio.p8 
+
+# Now, minify the temporary build, preserving names from the file
+p8tool luamin --keep-names-from-file=scripts/config/preserve_names.txt $BUILD_DIR/prod/${PROJECT_NAME}-prod-built.p8
+mv $BUILD_DIR/prod/${PROJECT_NAME}-prod-built_fmt.p8 $BUILD_DIR/prod/${PROJECT_NAME}-prod.p8
+rm $BUILD_DIR/prod/${PROJECT_NAME}-prod-built.p8
 
 # Copy final distribution
 cp $BUILD_DIR/prod/${PROJECT_NAME}-prod.p8 ${PROJECT_NAME}.p8
 
-
-echo "Building swico8 version..."
-# swico8 build - based on prod build, but with injected code
-# Create a temporary main.lua for the swico8 build
-sed -i.bak '/function _init()/a \
-    menuitem(1, "swico-8 games", function() load("./swico8.p8") end)
-' $SRC_DIR/main.lua
-mv $SRC_DIR/main.lua $SRC_DIR/main.swico8.lua
-mv $SRC_DIR/main.lua.bak $SRC_DIR/main.lua
-
-p8tool build $BUILD_DIR/swico8/${PROJECT_NAME}-swico8.p8 \
-    --lua $SRC_DIR/main.swico8.lua \
-    --lua-path="$LUA_PATH" \
-    --gfx $ASSETS_DIR/sprites.p8 \
-    --sfx $ASSETS_DIR/audio.p8 \
-    --music $ASSETS_DIR/audio.p8 \
-    --lua-minify \
-    --keep-names-from-file=config/preserve_names.txt
 
 # Clean up the temporary file
 rm $SRC_DIR/main.swico8.lua
