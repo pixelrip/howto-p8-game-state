@@ -10,8 +10,8 @@ function UILabel.new(options)
     self.color = options.color or 7
     self.align = options.align or "left"
     self.width = options.width or #self.text*4
-    self.padding = options.padding or 0
     self.height = options.height or 5
+    self.padding = options.padding or 0
     self.bgcolor = options.bgcolor or false
     
     -- Maybe/Someday
