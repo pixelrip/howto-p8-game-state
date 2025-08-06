@@ -48,7 +48,6 @@ rm $SRC_DIR/main.swico8.lua
 echo "Build complete!"
 echo "Development build: $BUILD_DIR/dev/${PROJECT_NAME}-dev.p8"
 echo "Production build: $BUILD_DIR/prod/${PROJECT_NAME}-prod.p8"
-echo "swico8 build: $BUILD_DIR/swico8/${PROJECT_NAME}-swico8.p8"
 echo "Final cart: ${PROJECT_NAME}.p8"
 
 # Show stats for the final cartridge
