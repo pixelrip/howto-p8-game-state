@@ -1,6 +1,9 @@
 -- Player Class
-
 Player = {}
+
+-- Extend the entity class
+setmetatable(Player,{__index = Entity})
+
 Player.__index = Player
 
 -- Player Constants
@@ -11,13 +14,13 @@ Player.BASE_H = 13
 
 -- Constructor for Player
 function Player.new(x,y)
-    local self = setmetatable({}, Player)
+    -- Create the base entity:
+    local self = Entity.new(Player.START_X, Player.START_Y, Player.BASE_W, Player.BASE_H)
+
+    -- Turn the entity into a Player
+    setmetatable(self, Player)
     
-    -- Properties
-    self.x = x or Player.START_X
-    self.y = y or Player.START_Y
-    self.w = Player.BASE_W
-    self.h = Player.BASE_H
+    -- Set Player Properties
     self.is_locked = false
     
     -- Components

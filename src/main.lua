@@ -19,6 +19,7 @@ require("components/moveable")
 require("components/image")
 
 -- Entities
+require("entities/base/entity")
 require("entities/player")
 
 -- Main entry point for the game
