@@ -1,10 +1,10 @@
--- UI Label Class ... Extends UIElement
+-- UI UILabel Class ... Extends UIElement
 
-Label = UIElement.new()
-Label.__index = Label
+UILabel = UIElement.new()
+UILabel.__index = UILabel
 
-function Label.new(options)
-    local self = setmetatable(UIElement.new(options), Label)
+function UILabel.new(options)
+    local self = setmetatable(UIElement.new(options), UILabel)
 
     self.text = options.text or ""
     self.color = options.color or 7
@@ -16,10 +16,11 @@ function Label.new(options)
     
     -- Maybe/Someday
     -- self.valign = options.valign or "top"
+    -- self.wrap = options.wrap or false
     return self
 end
 
-function Label:draw()
+function UILabel:draw()
     if not self.is_visible then return end
     local _x0 = self.x
     local _y0 = self.y
@@ -36,9 +37,9 @@ function Label:draw()
         _x0 += (self.width - #self.text * 4) / 2
     end
 
-    if self.align == "left" then
-        -- TODO
-    end
+    -- Maybe/Someday
+    -- if self.align == "left" then
+    -- end
 
     print(self.text, _x0, _y0, self.color)
     

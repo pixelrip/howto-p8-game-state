@@ -9,7 +9,7 @@ function TitleState:init()
     -- State Properties
     self.bgcolor = 1
 
-    self.start_label = Label.new({
+    self.start_label = UILabel.new({
         text = "press "..chr(151).." to start",
         x = 0,
         y = 24,
