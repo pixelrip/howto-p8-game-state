@@ -25,6 +25,7 @@ require("entities/player")
 -- UI
 require("ui/base/UIElement")
 require("ui/label")
+require("ui/image")
 
 -- Main entry point for the game
 function _init()

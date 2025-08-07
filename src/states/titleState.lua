@@ -9,12 +9,33 @@ function TitleState:init()
     -- State Properties
     self.bgcolor = 1
 
+    -- State UI
+    self.logo = UIImage.new({
+        x = 5,
+        y = 30,
+        width = 118,
+        height = 19,
+        sx = 0, 
+        sy = 13, 
+        alpha = 11 
+    })
+
+    self.subtitle = UILabel.new({
+        text = "the game",
+        x = 0,
+        y = 54,
+        width = 127,
+        color = 7,
+        align = "center"
+
+    })
+
     self.start_label = UILabel.new({
         text = "press "..chr(151).." to start",
         x = 0,
-        y = 24,
+        y = 94,
         width = 127,
-        color = 7,
+        color = 14,
         align = "center"
     })
 end
@@ -31,7 +52,8 @@ end
 
 function TitleState:draw()
     cls(self.bgcolor)
-    print("title state!", 2, 2, 7)
+    self.logo:draw()
+    self.subtitle:draw()
     self.start_label:draw()
 end
 
